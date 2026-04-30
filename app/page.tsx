@@ -175,7 +175,7 @@ export default function LandingPage() {
             />
             <PlanCard 
               name="Bank Pix Start" price="319 MT"
-              benefits={["Apenas 1 chave", "Saque até 500 MT"]}
+              benefits={["Apenas 1 chave", "Saque até 5000 MT"]}
               buttonText="Começar com o básico" link="https://pay.kambafy.com/checkout/8e10e34b-8134-4456-9dce-efb470f3dd9b" 
             />
           </div>
