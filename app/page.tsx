@@ -3,18 +3,12 @@
 import { useState, useEffect, useRef } from "react";
 import Script from 'next/script';
 import {
-  Zap,
-  Shield,
   Clock,
   Smartphone,
   ArrowRight,
-  Banknote,
-  Wallet,
   CheckCircle,
-  Star,
   Flame,
-  MessageCircle,
-  ChevronDown
+  MessageCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -112,14 +106,12 @@ function PlanCard({
 
     const cleanPrice = parseFloat(price.replace(/[^0-9.,]/g, '').replace(',', '.')) || 0;
 
-    // Evento Padrão (Meta recomenda)
     (window as any).fbq('track', 'InitiateCheckout', {
       content_name: name,
       value: cleanPrice,
       currency: 'MZN',
     });
 
-    // Evento Customizado (mais fácil de analisar)
     (window as any).fbq('trackCustom', 'Click_Plano', {
       plano: name,
       preco: cleanPrice,
@@ -186,7 +178,7 @@ export default function LandingPage() {
     plansRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Evento quando a pessoa entra na página
+  // Evento ao entrar na página
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).fbq) {
       (window as any).fbq('track', 'ViewContent', {
@@ -287,13 +279,13 @@ export default function LandingPage() {
                 link="https://pay.kambafy.com/checkout/e8ab6f89-80dc-49c1-b937-c19c3a704ba8"
               />
 
-              {/* Start */}
+              {/* Start - Corrigido */}
               <PlanCard
                 name="Bank Pix Start"
                 price="319 MT"
                 benefits={[
                   "Apenas 1 chave",
-                  "Saque até 500 MT",
+                  "Saque até 5000 MT",           // ← Aqui está corrigido
                   "Acesso básico",
                   "Funcionalidades limitadas"
                 ]}
@@ -319,7 +311,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* WhatsApp */}
         <WhatsAppFloating />
       </main>
     </>
